@@ -4,21 +4,47 @@
 ### 安全检查单
 
 ##### 认证 (注册/登录/双因子/重置密码) 
+##### [AUTHENTICATION SYSTEMS (Signup/Signin/2 Factor/Password reset)]
 
 
-- [ ] 全站启用Https Use HTTPS everywhere.
-- [ ] 使用Bcrypt对密码进行加密 Store password hashes using `Bcrypt` (no salt necessary - `Bcrypt` does it for you).
-- [ ] 用户退出后，销毁会话 Destroy the session identifier after `logout`.  
-- [ ] 重置密码后，销毁所有尚生效的会话 Destroy all active sessions on reset password (or offer to).  
-- [ ] OAuth2必须启用state参数 Must have the `state` parameter in OAuth2.
-- [ ] 不要在成功登录后，做页面重定向或跳转 No open redirects after successful login or in any other intermediate redirects.
-- [ ] 在注册/登录功能处，过滤javascript://,data://,CRLF字符 When parsing Signup/Login input, sanitize for javascript://, data://, CRLF characters. 
-- [ ] Cookies设置secure和httpOnly选项 Set secure, httpOnly cookies.
-- [ ] 在使用短信认证时，不将任何短信认证内容放到http相应会话中 In Mobile `OTP` based mobile verification, do not send the OTP back in the response when `generate OTP` or `Resend OTP`  API is called.
-- [ ] 限制对特定用户的登录、验证手机验证码、重发手机验证码、生产手机验证码的API调用，有退避算法或者验证码，避免被暴力破解 Limit attempts to `Login`, `Verify OTP`, `Resend OTP` and `generate OTP` APIs for a particular user. Have an exponential backoff set or/and something like a captcha based challenge.
-- [ ] 检查邮件、短信中的重置密码会话是否随机 Check for randomness of reset password token in the emailed link or SMS.
-- [ ] 重置密码会话设置合理的生效时间 Set an expiration on the reset password token for a reasonable period.
-- [ ] 成功重置密码后，销毁已使用的会话 Expire the reset token after it has been successfully used.
+- [ ] 全站启用Https 
+- [ ] Use HTTPS everywhere.
+
+- [ ] 使用Bcrypt对密码进行加密 
+- [ ] Store password hashes using `Bcrypt` (no salt necessary - `Bcrypt` does it for you).
+
+- [ ] 用户退出后，销毁会话 
+- [ ] Destroy the session identifier after `logout`.  
+
+- [ ] 重置密码后，销毁所有尚生效的会话 
+- [ ] Destroy all active sessions on reset password (or offer to).  
+
+- [ ] OAuth2必须启用state参数 
+- [ ] Must have the `state` parameter in OAuth2.
+
+- [ ] 不要在成功登录后，做页面重定向或跳转 
+- [ ] No open redirects after successful login or in any other intermediate redirects.
+
+- [ ] 在注册/登录功能处，过滤javascript://,data://,CRLF字符 
+- [ ] When parsing Signup/Login input, sanitize for javascript://, data://, CRLF characters. 
+
+- [ ] Cookies设置secure和httpOnly选项 
+- [ ] Set secure, httpOnly cookies.
+
+- [ ] 在使用短信认证时，不将任何短信认证内容放到http相应会话中 
+- [ ] In Mobile `OTP` based mobile verification, do not send the OTP back in the response when `generate OTP` or `Resend OTP`  API is called.
+
+- [ ] 限制对特定用户的登录、验证手机验证码、重发手机验证码、生产手机验证码的API调用，有退避算法或者验证码，避免被暴力破解 
+- [ ] Limit attempts to `Login`, `Verify OTP`, `Resend OTP` and `generate OTP` APIs for a particular user. Have an exponential backoff set or/and something like a captcha based challenge.
+
+- [ ] 检查邮件、短信中的重置密码会话是否随机 
+- [ ] Check for randomness of reset password token in the emailed link or SMS.
+
+- [ ] 重置密码会话设置合理的生效时间 
+- [ ] Set an expiration on the reset password token for a reasonable period.
+
+- [ ] 成功重置密码后，销毁已使用的会话 
+- [ ] Expire the reset token after it has been successfully used.
 
 
 ##### 用户数据 & 授权

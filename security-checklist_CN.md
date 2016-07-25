@@ -1,11 +1,8 @@
 [Back to Contents](README.md)
 
 
-### The Security Checklist 
-
 ### 安全检查单
 
-##### AUTHENTICATION SYSTEMS (Signup/Signin/2 Factor/Password reset) 
 ##### 认证 (注册/登录/双因子/重置密码) 
 
 
@@ -24,7 +21,6 @@
 - [ ] Expire the reset token after it has been successfully used.
 
 
-##### USER DATA & AUTHORIZATION
 ##### 用户数据 & 授权
 
 - [ ] Any resource access like, `my cart`, `my history` should check the logged in user's ownership of the resource using session id.
@@ -45,7 +41,6 @@
 - [ ] [Certificate pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning) is highly recommended.
 
 
-##### SECURITY HEADERS & CONFIGURATIONS
 ##### Http头安全 & 配置
 
 - [ ] `Add` [CSP](https://en.wikipedia.org/wiki/Content_Security_Policy) header to mitigate XSS and data injection attacks. This is important.
@@ -59,7 +54,6 @@
 - [ ] Use random CSRF tokens and expose business logic APIs as HTTP POST requests. Do not expose CSRF tokens over HTTP for example in an initial request upgrade phase.
 - [ ] Do not use critical data or tokens in GET request parameters. Exposure of server logs or a machine/stack processing them would expose user data in turn.
 
-##### SANITIZATION OF INPUT
 ##### 输入过滤
 
 - [ ] `Sanitize` all user inputs or any input parameters exposed to user to prevent [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting).
@@ -70,7 +64,6 @@
 - [ ] Sanitize inputs that take some sort of URLs to prevent [SSRF](https://docs.google.com/document/d/1v1TkWZtrhzRLy0bYXBcdLUedXGb9njTNIJXa3u9akHM/edit#heading=h.t4tsk5ixehdd).
 - [ ] Sanitize Outputs before displaying to users.
 
-##### OPERATIONS
 ##### 运维安全
 
 - [ ] If you are small and inexperienced, evaluate using AWS elasticbeanstalk or a PaaS to run your code.
@@ -85,7 +78,6 @@
 - [ ] Set up monitoring for your systems, and log stuff (use [New Relic](https://newrelic.com/) or something like that).
 - [ ] If developing for enterprise customers, adhere to compliance requirements. If AWS S3, consider using the feature to [encrypt data](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html). If using AWS EC2, consider using the feature to use encrypted volumes (even boot volumes can be encrypted now).
 
-##### PEOPLE
 ##### 人员
 
 - [ ] Set up an email (e.g. security@coolcorp.io) and a page for security researchers to report vulnerabilities.

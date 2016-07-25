@@ -71,7 +71,7 @@
 - [ ] Sanitize Outputs before displaying to users.
 
 ##### OPERATIONS
-##### 运营
+##### 运维安全
 
 - [ ] If you are small and inexperienced, evaluate using AWS elasticbeanstalk or a PaaS to run your code.
 - [ ] Use a decent provisioning script to create VMs in the cloud.

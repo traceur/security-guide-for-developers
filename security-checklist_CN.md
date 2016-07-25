@@ -3,65 +3,40 @@
 
 ### 安全检查单
 
+翻译:qiaoy
+
 ##### 认证 (注册/登录/双因子/重置密码) 
-##### [AUTHENTICATION SYSTEMS (Signup/Signin/2 Factor/Password reset)]
 
 
 - [ ] 全站启用Https 
-- [ ] Use HTTPS everywhere.
-
 - [ ] 使用Bcrypt对密码进行加密 
-- [ ] Store password hashes using `Bcrypt` (no salt necessary - `Bcrypt` does it for you).
-
 - [ ] 用户退出后，销毁会话 
-- [ ] Destroy the session identifier after `logout`.  
-
 - [ ] 重置密码后，销毁所有尚生效的会话 
-- [ ] Destroy all active sessions on reset password (or offer to).  
-
 - [ ] OAuth2必须启用state参数 
-- [ ] Must have the `state` parameter in OAuth2.
-
 - [ ] 不要在成功登录后，做页面重定向或跳转 
-- [ ] No open redirects after successful login or in any other intermediate redirects.
-
 - [ ] 在注册/登录功能处，过滤javascript://,data://,CRLF字符 
-- [ ] When parsing Signup/Login input, sanitize for javascript://, data://, CRLF characters. 
-
 - [ ] Cookies设置secure和httpOnly选项 
-- [ ] Set secure, httpOnly cookies.
-
 - [ ] 在使用短信认证时，不将任何短信认证内容放到http相应会话中 
-- [ ] In Mobile `OTP` based mobile verification, do not send the OTP back in the response when `generate OTP` or `Resend OTP`  API is called.
-
 - [ ] 限制对特定用户的登录、验证手机验证码、重发手机验证码、生产手机验证码的API调用，有退避算法或者验证码，避免被暴力破解 
-- [ ] Limit attempts to `Login`, `Verify OTP`, `Resend OTP` and `generate OTP` APIs for a particular user. Have an exponential backoff set or/and something like a captcha based challenge.
-
 - [ ] 检查邮件、短信中的重置密码会话是否随机 
-- [ ] Check for randomness of reset password token in the emailed link or SMS.
-
 - [ ] 重置密码会话设置合理的生效时间 
-- [ ] Set an expiration on the reset password token for a reasonable period.
-
 - [ ] 成功重置密码后，销毁已使用的会话 
-- [ ] Expire the reset token after it has been successfully used.
-
 
 ##### 用户数据 & 授权
 
-- [ ] Any resource access like, `my cart`, `my history` should check the logged in user's ownership of the resource using session id.
-- [ ] Serially iterable resource id should be avoided. Use `/me/orders` instead of `/user/37153/orders`. This acts as a sanity check in case you forgot to check for authorization token. 
-- [ ] `Edit email/phone number` feature should be accompanied by a verification email to the owner of the account. 
-- [ ] Any upload feature should sanitize the filename provided by the user. Also, for generally reasons apart from security, upload to something like S3 (and post-process using lambda) and not your own server capable of executing code.  
-- [ ] `Profile photo upload` feature should sanitize all the `EXIF` tags also if not required.
+- [ ] 任何途径访问类似'购物车'、'历史记录'时，必须根据会话ID检查登录用户的所有权
+- [ ] 避免连续的资源ID，使用'/me/orders'而不是'/user/37153/orders'，避免忘记做用户鉴权
+- [ ] 修改邮箱/手机号等资料时，需先发送验证用户身份的邮件
+- [ ] 任何上传功能都需将用户上传的文件进行重命名，上传文件存储于独立服务，翻译注:可对web中间件用户做权限配置，设置上传目录有写入，无执行权限，其他目录有执行，无写入权限
+- [ ] 如无特殊需求，需将上传图片的EXIF标记清除
 - [ ] For user ids and other ids, use [RFC compliant ](http://www.ietf.org/rfc/rfc4122.txt) `UUID` instead of integers. You can find an implementation for this for your language on Github.
-- [ ] JWT are awesome. Use them if required for your single page app/APIs.
+- [ ] 独立的应用或接口，需使用JSON Web Token
 
 
 ##### ANDROID / IOS APP
 
-- [ ] `salt` from payment gateways should not be hardcoded.
-- [ ] `secret` / `auth token` from 3rd party SDK's should not be hardcoded.
+- [ ] 支付通道的salt必能硬编码
+- [ ] 第三方SDK的secret和认证令牌不能硬编码
 - [ ] API calls intended to be done `server to server` should not be done from the app.
 - [ ] In Android, all the granted  [permissions](https://developer.android.com/guide/topics/security/permissions.html) should be carefully evaluated.
 - [ ] [Certificate pinning](https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning) is highly recommended.

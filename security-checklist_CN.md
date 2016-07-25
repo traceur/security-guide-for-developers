@@ -3,7 +3,12 @@
 
 ### The Security Checklist 
 
+### 安全检查单
+
 ##### AUTHENTICATION SYSTEMS (Signup/Signin/2 Factor/Password reset) 
+##### 认证 (注册/登录/双因子/重置密码) 
+
+
 - [ ] Use HTTPS everywhere.
 - [ ] Store password hashes using `Bcrypt` (no salt necessary - `Bcrypt` does it for you).
 - [ ] Destroy the session identifier after `logout`.  
@@ -20,6 +25,8 @@
 
 
 ##### USER DATA & AUTHORIZATION
+##### 用户数据 & 授权
+
 - [ ] Any resource access like, `my cart`, `my history` should check the logged in user's ownership of the resource using session id.
 - [ ] Serially iterable resource id should be avoided. Use `/me/orders` instead of `/user/37153/orders`. This acts as a sanity check in case you forgot to check for authorization token. 
 - [ ] `Edit email/phone number` feature should be accompanied by a verification email to the owner of the account. 
@@ -30,6 +37,7 @@
 
 
 ##### ANDROID / IOS APP
+
 - [ ] `salt` from payment gateways should not be hardcoded.
 - [ ] `secret` / `auth token` from 3rd party SDK's should not be hardcoded.
 - [ ] API calls intended to be done `server to server` should not be done from the app.
@@ -38,6 +46,8 @@
 
 
 ##### SECURITY HEADERS & CONFIGURATIONS
+##### Http头安全 & 配置
+
 - [ ] `Add` [CSP](https://en.wikipedia.org/wiki/Content_Security_Policy) header to mitigate XSS and data injection attacks. This is important.
 - [ ] `Add` [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) header to prevent cross site request forgery. Also add [SameSite](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00) attributes on cookies.
 - [ ] `Add` [HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) header to prevent SSL stripping attack.
@@ -50,6 +60,8 @@
 - [ ] Do not use critical data or tokens in GET request parameters. Exposure of server logs or a machine/stack processing them would expose user data in turn.
 
 ##### SANITIZATION OF INPUT
+##### 输入过滤
+
 - [ ] `Sanitize` all user inputs or any input parameters exposed to user to prevent [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting).
 - [ ] `Sanitize` all user inputs or any input parameters exposed to user to prevent [SQL Injection](https://en.wikipedia.org/wiki/SQL_injection).
 - [ ] Sanitize user input if using it directly for functionalities like CSV import.
@@ -59,6 +71,8 @@
 - [ ] Sanitize Outputs before displaying to users.
 
 ##### OPERATIONS
+##### 运营
+
 - [ ] If you are small and inexperienced, evaluate using AWS elasticbeanstalk or a PaaS to run your code.
 - [ ] Use a decent provisioning script to create VMs in the cloud.
 - [ ] Check for machines with unwanted publicly `open ports`.
@@ -72,6 +86,8 @@
 - [ ] If developing for enterprise customers, adhere to compliance requirements. If AWS S3, consider using the feature to [encrypt data](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html). If using AWS EC2, consider using the feature to use encrypted volumes (even boot volumes can be encrypted now).
 
 ##### PEOPLE
+##### 人员
+
 - [ ] Set up an email (e.g. security@coolcorp.io) and a page for security researchers to report vulnerabilities.
 - [ ] Depending on what you are making, limit access to your user databases.
 - [ ] Be polite to bug reporters.
